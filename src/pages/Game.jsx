@@ -6,6 +6,7 @@ import "./Game.css";
 const Game = () => {
     const [coords, setCoords] = useState({});
     const [modalClass, setModalClass] = useState("none");
+    const [modalCoords, setModalCoords] = useState({});
 
     const onClick = (e) => {
         const xCoord = Math.round(
@@ -14,9 +15,16 @@ const Game = () => {
         const yCoord = Math.round(
             (e.nativeEvent.offsetY / e.target.offsetHeight) * 100
         );
+
+        const modalXCoord = Math.round(e.pageX);
+        const modalYCoord = Math.round(e.pageY);
         const coords = { xCoord, yCoord };
+        const modalCoords = { modalXCoord, modalYCoord };
         console.log(coords);
+        console.log(modalCoords);
+
         setCoords(coords);
+        setModalCoords(modalCoords);
         isActive();
     };
 
@@ -33,7 +41,7 @@ const Game = () => {
     return (
         <div className="container">
             <img src={boardImg} alt="ps4" className="board" onClick={onClick} />
-            <Modal props={coords} modalClass={modalClass} />
+            <Modal props={modalCoords} modalClass={modalClass} />
         </div>
     );
 };

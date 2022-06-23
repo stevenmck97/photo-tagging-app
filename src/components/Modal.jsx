@@ -1,8 +1,8 @@
 const Modal = ({ props, modalClass }) => {
     const styles = {
         position: {
-            left: props.xCoord + "%",
-            top: props.yCoord + "%",
+            left: props.modalXCoord + 25 + "px",
+            top: props.modalYCoord + "px",
             display: modalClass,
             position: "absolute",
             background: "white",
@@ -11,8 +11,9 @@ const Modal = ({ props, modalClass }) => {
 
     return (
         <div style={styles.position} className="modal">
-            <p>test</p>
-            <p>bro</p>
+            <p className="modal-item">Nathan Drake</p>
+            <p className="modal-item">Kratos</p>
+            <p className="modal-item">Snake</p>
         </div>
     );
 };
