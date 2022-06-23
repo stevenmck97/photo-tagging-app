@@ -1,7 +1,12 @@
+import { useState } from "react";
 import boardImg from "../assets/boards/ps4.jpg";
+import Modal from "../components/Modal";
 import "./Game.css";
 
 const Game = () => {
+    const [coords, setCoords] = useState({});
+    const [modalClass, setModalClass] = useState("none");
+
     const onClick = (e) => {
         const xCoord = Math.round(
             (e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100
@@ -11,12 +16,24 @@ const Game = () => {
         );
         const coords = { xCoord, yCoord };
         console.log(coords);
-        return coords;
+        setCoords(coords);
+        isActive();
+    };
+
+    const isActive = () => {
+        if (modalClass === "none") {
+            setModalClass("block");
+        } else if (modalClass === "block") {
+            setModalClass("none");
+        }
+
+        console.log(modalClass);
     };
 
     return (
         <div className="container">
             <img src={boardImg} alt="ps4" className="board" onClick={onClick} />
+            <Modal props={coords} modalClass={modalClass} />
         </div>
     );
 };

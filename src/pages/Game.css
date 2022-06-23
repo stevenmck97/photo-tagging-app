@@ -10,3 +10,13 @@ body {margin: 0}
     cursor: crosshair;
 }
 
+.modal{
+    display:none;
+    position: absolute;
+    background: white;
+    z-index: 100;
+    
+}
+.modal.show{
+    display:block;
+}
