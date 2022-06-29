@@ -13,16 +13,37 @@ const compareCharCoords = async (coords) => {
     // cloudYCoord = doc.get("coords.yCoord");
 
     const querySnapshot = await getDocs(collection(db, "characters"));
+    // querySnapshot.forEach((doc) => {
+    //     for (let i = 1; i <= 3; i++) {
+    //         coords.xCoord + i === doc.get("coords.xCoord") + i &&
+    //         coords.yCoord + i === doc.get("coords.yCoord") + i
+    //             ? alert(`You found ${doc.get("name")}`)
+    //             : console.log("fail");
+    //     }
+    // });
+
     querySnapshot.forEach((doc) => {
-        coords.xCoord + 3 === doc.get("coords.xCoord") + 3 &&
-        coords.yCoord + 3 === doc.get("coords.yCoord") + 3
-            ? alert(`You found ${doc.get("name")}`)
-            : alert("Keep trying!");
+        compareCoords(
+            coords.xCoord,
+            coords.yCoord,
+            doc.get("coords.xCoord"),
+            doc.get("coords.yCoord")
+        )
+            ? console.log("you win lol")
+            : console.log("u suck");
     });
 };
 
-// const compareCoords = (coords) => {
-
-// }
+const compareCoords = (localXCoord, localYCoord, cloudXCoord, cloudYCoord) => {
+    return (
+        (localXCoord === cloudXCoord && localYCoord === cloudYCoord) ||
+        (localXCoord + 1 === cloudXCoord && localYCoord + 1 === cloudYCoord) ||
+        (localXCoord + 2 === cloudXCoord && localYCoord + 2 === cloudYCoord) ||
+        (localXCoord + 3 === cloudXCoord && localYCoord + 3 === cloudYCoord) ||
+        (localXCoord - 1 === cloudXCoord && localYCoord - 1 === cloudYCoord) ||
+        (localXCoord - 2 === cloudXCoord && localYCoord - 2 === cloudYCoord) ||
+        (localXCoord - 3 === cloudXCoord && localYCoord - 3 === cloudYCoord)
+    );
+};
 
 export default compareCharCoords;
