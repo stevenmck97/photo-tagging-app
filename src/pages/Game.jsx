@@ -2,6 +2,7 @@ import { useState } from "react";
 import boardImg from "../assets/boards/ps4.jpg";
 import Modal from "../components/Modal";
 import "./Game.css";
+import getCharacterDocs from "../utils/firebaseHandler";
 
 const Game = () => {
     const [coords, setCoords] = useState({});

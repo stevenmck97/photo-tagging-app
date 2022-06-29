@@ -1,7 +1,3 @@
-.wrapper{
-    position: fixed;
-}
-
 .nav {
     display: flex;
     flex-direction: row;
