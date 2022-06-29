@@ -2,7 +2,7 @@ import { useState } from "react";
 import boardImg from "../assets/boards/ps4.jpg";
 import Modal from "../components/Modal";
 import "./Game.css";
-import getCharacterDocs from "../utils/firebaseHandler";
+import compareCharCoords from "../utils/firebaseHandler";
 
 const Game = () => {
     const [coords, setCoords] = useState({});
@@ -27,6 +27,7 @@ const Game = () => {
         setCoords(coords);
         setModalCoords(modalCoords);
         isActive();
+        compareCharCoords(coords);
     };
 
     const isActive = () => {

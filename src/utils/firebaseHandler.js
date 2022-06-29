@@ -2,14 +2,27 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { firebaseConfig } from "../firebase-config";
 
-const getCharacterDocs = async () => {
+// let cloudXCoord;
+// let cloudYCoord;
+
+const compareCharCoords = async (coords) => {
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
+    // cloudXCoord = doc.get("coords.xCoord");
+    // cloudYCoord = doc.get("coords.yCoord");
+
     const querySnapshot = await getDocs(collection(db, "characters"));
     querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
+        coords.xCoord + 3 === doc.get("coords.xCoord") + 3 &&
+        coords.yCoord + 3 === doc.get("coords.yCoord") + 3
+            ? alert(`You found ${doc.get("name")}`)
+            : alert("Keep trying!");
     });
 };
 
-export default getCharacterDocs;
+// const compareCoords = (coords) => {
+
+// }
+
+export default compareCharCoords;
