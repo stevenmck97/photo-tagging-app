@@ -12,7 +12,12 @@ body {margin: 0}
 
 .modal{
     z-index: 100;
-    width: 100px;
-    height: 100px;
+    width: auto;
+    height: auto;
     border: 1px solid black;
+}
+
+.modal-item:hover {
+    cursor: pointer;
+    background-color: rgb(233, 224, 224);
 }

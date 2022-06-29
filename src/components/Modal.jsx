@@ -13,7 +13,7 @@ const Modal = ({ props, modalClass }) => {
         <div style={styles.position} className="modal">
             <p className="modal-item">Nathan Drake</p>
             <p className="modal-item">Kratos</p>
-            <p className="modal-item">Snake</p>
+            <p className="modal-item">Solid Snake</p>
         </div>
     );
 };
